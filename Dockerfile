@@ -4,7 +4,8 @@ RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libpng-dev \
-	libmcrypt-dev \
+	      libmcrypt-dev \
+        libxml2-dev \
 	&& docker-php-ext-configure gd --with-freetype --with-jpeg \
 	&& docker-php-ext-install -j$(nproc) gd iconv mcrypt \
 	&& docker-php-ext-configure intl \
@@ -12,7 +13,8 @@ RUN apt-get update && apt-get install -y \
 	&& docker-php-ext-install exif \
 	&& docker-php-ext-install -j$(nproc) iconv mcrypt \
 	&& docker-php-ext-install opcache \
-	&& docker-php-ext-install pdo_mysql
+	&& docker-php-ext-install pdo_mysql \
+	&& docker-php-ext-install soap
 
 ENV WWW_USER_ID=1000
 ENV WWW_GROUP_ID=1000
