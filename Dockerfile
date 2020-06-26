@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
         libjpeg-dev \
 	&& docker-php-ext-configure gd -with-freetype-dir=/usr --with-jpeg-dir=/usr --with-png-dir=/usr \
 	&& docker-php-ext-configure intl \
-	&& docker-php-ext-install -j$(nproc) gd iconv mcrypt iconv mcrypt intl exif opcache pdo_mysql soap mysqli zip gettext calendar bcmath \
+	&& docker-php-ext-install -j$(nproc) gd iconv mcrypt iconv intl exif opcache pdo_mysql soap mysqli zip gettext calendar bcmath \
   && rm -rf /var/lib/apt/lists/*
 
 ENV WWW_USER_ID=1000
