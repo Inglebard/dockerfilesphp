@@ -6,7 +6,8 @@ RUN apt-get update && apt-get install -y \
         libpng-dev \
 	      libmcrypt-dev \
         libxml2-dev \
-	&& docker-php-ext-configure gd --with-freetype --with-jpeg \
+        libjpeg-dev \
+	&& docker-php-ext-configure gd -with-freetype-dir=/usr --with-jpeg-dir=/usr --with-png-dir=/usr \
 	&& docker-php-ext-install -j$(nproc) gd iconv mcrypt \
 	&& docker-php-ext-configure intl \
 	&& docker-php-ext-install intl \
