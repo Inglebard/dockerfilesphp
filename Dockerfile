@@ -7,15 +7,9 @@ RUN apt-get update && apt-get install -y \
         libpng-dev \
         libxml2-dev \
 	&& docker-php-ext-configure gd -with-freetype-dir=/usr --with-jpeg-dir=/usr --with-png-dir=/usr \
-	&& docker-php-ext-install -j$(nproc) gd \
 	&& docker-php-ext-configure intl \
-	&& docker-php-ext-install intl \
-	&& docker-php-ext-install exif \
-	&& docker-php-ext-install -j$(nproc) iconv \
-	&& docker-php-ext-install opcache \
-	&& docker-php-ext-install mysqli \
-	&& docker-php-ext-install pdo pdo_mysql \
-  && docker-php-ext-install soap
+	&& docker-php-ext-install -j$(nproc) gd iconv mcrypt iconv mcrypt intl exif opcache pdo_mysql soap mysqli zip gettext calendar bcmath \
+  && rm -rf /var/lib/apt/lists/*
 
 ENV WWW_USER_ID=1000
 ENV WWW_GROUP_ID=1000
