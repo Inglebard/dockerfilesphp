@@ -39,6 +39,7 @@ catch_workers_output = yes' > /etc/php/7.0/fpm/pool.d/docker.conf
 RUN echo -e $'\
 [global]\n\
 daemonize = no\n\
+systemd_interval = 0\n\
 \n\
 [www]\n\
 listen = 9000' > /etc/php/7.0/fpm/pool.d/zz-docker.conf
