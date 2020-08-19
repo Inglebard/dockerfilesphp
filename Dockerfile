@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y \
         php-mbstring \
         php-xml \
         php-sqlite3 \
+        ghostscript \
   && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /run/php && mkdir -p /var/www/html
