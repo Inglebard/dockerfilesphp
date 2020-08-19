@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
 	      libmcrypt-dev \
         libxml2-dev \
         libjpeg-dev \
+        ghostscript \
 	&& docker-php-ext-configure gd -with-freetype-dir=/usr --with-jpeg-dir=/usr --with-png-dir=/usr \
 	&& docker-php-ext-configure intl \
 	&& docker-php-ext-install -j$(nproc) gd iconv mcrypt iconv intl exif opcache pdo_mysql soap mysqli zip gettext calendar bcmath \
