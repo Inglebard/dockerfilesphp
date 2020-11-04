@@ -10,7 +10,7 @@ then
 fi
 
 
-echo "$(hostname -i)\t$(hostname) $final_mail_domain" >> /etc/hosts
+echo "$(hostname -i)\t $final_mail_domain $(hostname)" >> /etc/hosts
 
 service sendmail start &
 php-fpm
