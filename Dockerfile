@@ -47,7 +47,7 @@ systemd_interval = 0\n\
 listen = 9000' > /etc/php/7.0/fpm/pool.d/zz-docker.conf
 
 
-RUN echo "sendmail_path=/usr/sbin/sendmail -t -i" >> etc/php/7.0/fpm/conf.d/sendmail.ini
+RUN echo "sendmail_path=/usr/sbin/sendmail -t -i" >> /etc/php/7.0/fpm/conf.d/sendmail.ini
 
 
 ENV WWW_USER_ID=1000
