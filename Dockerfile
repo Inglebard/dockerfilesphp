@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y \
         php-xml \
         php-sqlite3 \
         ghostscript \
+        sendmail \
   && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /run/php && mkdir -p /var/www/html
@@ -46,6 +47,7 @@ systemd_interval = 0\n\
 listen = 9000' > /etc/php/7.0/fpm/pool.d/zz-docker.conf
 
 
+RUN echo "sendmail_path=/usr/sbin/sendmail -t -i" >> /usr/local/etc/php/conf.d/sendmail.ini
 
 
 ENV WWW_USER_ID=1000
