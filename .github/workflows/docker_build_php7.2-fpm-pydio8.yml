@@ -1,0 +1,28 @@
+name: inglebard/php7.2-fpm-pydio8
+
+on:
+  push:
+    branches: [ php7.2-fpm-pydio8 ]
+  pull_request:
+    branches: [ php7.2-fpm-pydio8 ]
+  schedule:
+    - cron:  '15 20 20 * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: php7.2-fpm-pydio8
+    - name: docker login
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}   
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
+      run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+    - name: docker build inglebard/php7.2-fpm-pydio8
+      run: |
+        docker build . -t inglebard/php7.2-fpm-pydio8
+    - name: docker push
+      run: |
+        docker push inglebard/php7.2-fpm-pydio8
