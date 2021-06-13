@@ -1,0 +1,28 @@
+name: inglebard/php7.0-fpm-magento1
+
+on:
+  push:
+    branches: [ php7.0-fpm-magento1 ]
+  pull_request:
+    branches: [ php7.0-fpm-magento1 ]
+  schedule:
+    - cron:  '15 20 20 * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: php7.0-fpm-magento1
+    - name: docker login
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}   
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
+      run: |
+        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
+    - name: docker build inglebard/php7.0-fpm-magento1
+      run: |
+        docker build . -t inglebard/php7.0-fpm-magento1
+    - name: docker push
+      run: |
+        docker push inglebard/php7.0-fpm-magento1
